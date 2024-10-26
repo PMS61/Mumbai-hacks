@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 
 function Home() {
   return (
-    <div className='h-5/6'>
+    <div className='h-5/6 '>
     <div>
       <Map v={30} color="blue" />
     </div>

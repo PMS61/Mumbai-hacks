@@ -6,11 +6,13 @@ import Response from "./response";
 const PromptInputBar = ({ onSend }) => {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [submittedMessage, setSubmittedMessage] = useState(""); // Store submitted prompt
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleSend = async () => {
     if (message.trim()) {
-      setLoading(true); // Set loading to true when request starts
+      setLoading(true); // Start loading state
+      setSubmittedMessage(message); // Set submitted message when sending
 
       try {
         const res = await fetch("http://localhost:5000/", {
@@ -22,14 +24,14 @@ const PromptInputBar = ({ onSend }) => {
         });
 
         const data = await res.json();
-        setResponse(data.message);
+        setResponse(data.message); // Set response after fetching
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false); // Set loading to false when request completes
+        setLoading(false); // Stop loading state
       }
 
-      setMessage("");
+      setMessage(""); // Clear input field
     }
   };
 
@@ -64,10 +66,14 @@ const PromptInputBar = ({ onSend }) => {
       </div>
 
       {/* Loader: Display while loading */}
-      {loading ? (
-        <div className="mt-4 text-center text-white">Loading...</div>
-      ) : (
-        response && <Response response={response} />
+      {loading && <div className="mt-4 text-center text-white">Loading...</div>}
+
+      {/* Display submitted prompt and response together after response is generated */}
+      {!loading && submittedMessage && response && (
+        <div className="mt-4 p-4 bg-gray-800 rounded-md text-white text-center">
+          <div><strong>Prompt:</strong> {submittedMessage}</div>
+          <Response response={response} />
+        </div>
       )}
     </div>
   );

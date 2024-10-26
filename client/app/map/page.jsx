@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className='h-5/6'>
     <div>
-      <Map v={20} color="blue" />
+      <Map v={30} color="blue" />
     </div>
     <img src="/MumbaiMap3.png" alt="Map" className='absolute top-0 h-fit'/>
     </div>

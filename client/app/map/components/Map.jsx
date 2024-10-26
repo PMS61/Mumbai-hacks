@@ -36,6 +36,25 @@ function generateRandomGrid(n, m) {
   return grid;
 }
 
+function adjustElements(arr, increaseFactor = 0.1, decreaseFactor = 0.1) {
+  // Calculate the average of all elements
+  const total = arr.flat().reduce((sum, value) => sum + value, 0);
+  const avgValue = total / (arr.length * arr[0].length);
+
+  // Adjust elements based on average, clamping between 0 and 1
+  const adjustedArr = arr.map(row => 
+      row.map(value => {
+          if (value > avgValue) {
+              return Math.min(1, value + increaseFactor);  // Increase and clamp to 1
+          } else {
+              return Math.max(0, value - decreaseFactor);  // Decrease and clamp to 0
+          }
+      })
+  );
+
+  return adjustedArr;
+}
+
 
 
 const Map = ({v = 20, color = "blue" }) => {
@@ -48,7 +67,9 @@ const Map = ({v = 20, color = "blue" }) => {
     "oldgrid: ", oldgrid
   )
 
-  let interpolate = 20
+  oldgrid = adjustElements(oldgrid,0.1,0.07)
+
+  let interpolate = 15
   v = v / interpolate
 
   let grid = generateInterpolatedGrid(oldgrid, interpolate);

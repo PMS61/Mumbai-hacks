@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Spline from '@splinetool/react-spline/next';
+import Link from "next/link";
 
 const LandingPg = () => {
     return (
@@ -15,6 +16,7 @@ const LandingPg = () => {
                         scene="https://prod.spline.design/pDThSb745xoWSRMP/scene.splinecode" />
                     </div>
                 </div>
+
             </div >
             <div className="h-screen w-full flex justify-center items-center" style={{backgroundColor: "#161825"}}>
                 <img src="flow3.svg" alt=""  width="60%"/>

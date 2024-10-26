@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Send } from "lucide-react";
 import Response from "./response";
+import Link from "next/link";
 
 const PromptInputBar = ({ onSend }) => {
   const [message, setMessage] = useState("");
@@ -73,6 +74,7 @@ const PromptInputBar = ({ onSend }) => {
         <div className="mt-4 p-4 bg-gray-800 rounded-md text-white text-center">
           <div><strong>Prompt:</strong> {submittedMessage}</div>
           <Response response={response} />
+          <Link href='/map'><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go to Heatmap</button></Link>
         </div>
       )}
     </div>

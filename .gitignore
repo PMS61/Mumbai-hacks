@@ -130,3 +130,4 @@ dist
 .pnp.*
 /server/.venv
 /server/__pycache__
+*.pyc

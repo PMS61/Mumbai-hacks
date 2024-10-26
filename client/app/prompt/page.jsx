@@ -42,15 +42,17 @@ const PromptInputBar = ({ onSend }) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-8">
-      <div className="fixed top-0 left-0 right-0 p-8 flex items-center space-x-4">
-        <textarea
-          className="flex-grow bg-gray-900 h-20 resize-none p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-          rows="1"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyPress={handleKeyPress}
-          placeholder="Type your message here..."
-        />
+      <div className="w-full p-8 flex items-center justify-center space-x-4">
+        <div className="pt-1 px-1 w-full rounded-md"  style={{"background": "linear-gradient(45deg, #4DDBD2, #B31FD8)"}}>
+          <textarea
+            className="flex-grow bg-gray-900 w-full h-16 p-4 rounded-md focus:outline-none focus:ring-2 text-white"
+            rows="1"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Type your message here..."
+          />
+        </div>
         <button
           className="p-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
           onClick={handleSend}

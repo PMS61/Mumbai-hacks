@@ -7,11 +7,12 @@ import dynamic from 'next/dynamic';
 
 function Home() {
   return (
-    <div className='h-5/6 '>
+  
+    <div className=' flex justify-center items-center h-screen w-full bg-white'>
     <div>
       <Map v={30} color="blue" />
     </div>
-    <img src="/MumbaiMap3.png" alt="Map" className='absolute top-0 h-fit'/>
+    <img src="/MumbaiMap3.png" alt="Map" style={{position:"fixed",left:601}} className='absolute top-13  h-fit'/>
     </div>
   );
 }
